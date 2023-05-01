@@ -32,6 +32,9 @@ const App = () => {
 	const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
   	const addExpenseHandler = (expense) => {
+
+		// Here prevExpenses always contains the latested update states and we return it using
+		// spread operator
 		setExpenses((prevExpenses) => {
 			return [expense, ...prevExpenses];
 		});
@@ -40,6 +43,10 @@ const App = () => {
 	return (
 		<div>
 			<NewExpense onAddExpense={addExpenseHandler} />
+
+			{/* calls <Expenses/> component with dummy expenses data in items variable,
+				passed through props
+			*/}
 			<Expenses items={expenses} />
 		</div>
 	);

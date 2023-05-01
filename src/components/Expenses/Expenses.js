@@ -9,6 +9,8 @@ import './Expenses.css';
 const Expenses = (props) => {
 	const [filteredYear, setFilteredYear] = useState('2020');
 
+	// filterChangeHandler() executes in the children component and return the filtered year
+		
 	const filterChangeHandler = (selectedYear) => {
 		setFilteredYear(selectedYear);
 	};
@@ -19,13 +21,14 @@ const Expenses = (props) => {
 
 	return (
 		<div>
+
+			{/* <Card/> is a custom component used to reduce duplicate CSS Here */}
 			<Card className='expenses'>
-			<ExpensesFilter
-				selected={filteredYear}
-				onChangeFilter={filterChangeHandler}
-			/>
-			<ExpensesChart expenses={filteredExpenses} />
-			<ExpensesList items={filteredExpenses} />
+
+				<ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler}/>
+				<ExpensesChart expenses={filteredExpenses} />
+				<ExpensesList items={filteredExpenses} />
+				
 			</Card>
 		</div>
 	);
